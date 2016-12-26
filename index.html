@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" href="css/index.css" />
+</head>
+<body>
+		<div class="example" id="the-basics">
+				<h2 class="example-name">Basic folders</h2>
+
+				<div class="demo">
+						<input class="js-input typeahead"" type="text" placeholder="Wrike folders">
+				</div>
+		</div>
+		<script src="node_modules/systemjs/dist/system.js"></script>
+		<script>
+				SystemJS.config({ paths: { '*': 'node_modules/*', 'js/*': 'js/*' } });
+				SystemJS.import('js/main.js');
+		</script>
+</body>
+</html>

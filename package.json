@@ -1,0 +1,20 @@
+{
+  "name": "example-for-microsoft",
+  "version": "1.0.0",
+  "description": "Example of folderpicker",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alexey Zolotykh",
+  "license": "ISC",
+  "dependencies": {
+    "fuse.js": "^2.6.1",
+    "jquery": "^3.1.1",
+    "lodash": "^4.17.3",
+    "lodash-amd": "^4.17.3",
+    "systemjs": "^0.19.41",
+    "typeahead.js": "^0.11.1",
+    "whatwg-fetch": "^2.0.1"
+  }
+}
