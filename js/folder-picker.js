@@ -29,6 +29,9 @@ FolderPicker.prototype.getFoldersList = function () {
 				}, 
 						{ 
 								source: this.search(this.searcher).bind(this),
+								display: function(result){
+										return result.item.title;
+								},
 								limit: 100,
 								templates: {
 										suggestion: Handlebars.compile('<div title="{{path}}" class="result"><span class="title">{{item.title}}</span><span class="path"> {{path}}<span></div>')

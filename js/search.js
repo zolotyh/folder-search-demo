@@ -29,7 +29,7 @@ Search.prototype.init = function () {
 
 Search.prototype.search = function (q) {
 		return this.fuse.search(q).slice(0, RESULT_LENGTH - 1).reduce(function(memo, item){
-				item.path = this.createPath(item.item.id)
+				item.path = this.createPath(item.item.id);
 				memo.push(item);
 				return memo;
 		}.bind(this), []);
