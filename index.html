@@ -5,14 +5,14 @@
 	<title></title>
 	<link rel="stylesheet" href="css/index.css" />
 </head>
-<body>
+<body class="waiting">
 		<div class="example" id="the-basics">
-				<h2 class="example-name">Basic folders</h2>
-
+				<h2 class="example-name">Basic folder picker</h2>
 				<div class="demo">
-						<input class="js-input typeahead"" type="text" placeholder="Wrike folders">
+						<input class="js-input typeahead" type="text" placeholder="Wrike folders">
 				</div>
 		</div>
+		<div class="loading">Loading</div>
 		<script src="node_modules/systemjs/dist/system.js"></script>
 		<script>
 				SystemJS.config({ paths: { '*': 'node_modules/*', 'js/*': 'js/*' } });

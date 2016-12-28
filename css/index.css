@@ -169,3 +169,47 @@ p + p {
 #rtl-support .tt-menu {
   text-align: right;
 }
+
+.result {
+		white-space:nowrap;
+		padding: 7px;
+}
+
+.result .title {
+		overflow: hidden;
+		font-weight: 600;
+		text-overflow: ellipsis;
+		display:block;
+		font-size: 14px;
+		line-height: 18px;
+		margin:0;
+		padding:0;
+}
+
+.result .path {
+		direction: rtl;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display:block;
+		line-height: 13px;
+		font-size: 12px;
+		margin:0;
+		padding:0;
+}
+
+.loading {
+		display:none;
+}
+
+.waiting .loading {
+		display:block;
+}
+
+.waiting .example {
+		display: none;
+}
+
+.tt-dataset {
+	max-height: 147px;
+	overflow-y:auto;
+}

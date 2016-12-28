@@ -1,51 +1,48 @@
 var jquery = require('jquery/dist/jquery.slim.min.js'),
-    Bloodhound = require('typeahead.js/dist/bloodhound.min.js'),
-    _ = require('lodash/lodash.js'),
-    API = require('./api.js');
+		API = require('./api.js'),
+		Handlebars = require('handlebars/dist/handlebars.min.js')
+		Search = require('./search.js');
 
-var Search = require('./search.js');
-
-require('../node_modules/typeahead.js/dist/typeahead.jquery.min.js');
+require('typeahead.js/dist/typeahead.jquery.min.js');
 
 var api = new API();
 
 
+FolderPicker.prototype.search = function(searcher){
+		return function findMatches(query, cb) {
+				var result = searcher.search(query);
+				cb(result);
+		};
+};
+
+
 FolderPicker.prototype.getFoldersList = function () {
-    var substringMatcher = function (searcher) {
-        return function findMatches(query, cb) {
-            var result = searcher.search(query);
-            var matches = result.reduce(function (memo, i) {
-                memo.push(i.item.title);
-                return memo;
-            }, []);
+		return api.getFoldersList().then(function (data) {
+				this.searcher = new Search(data);
 
-            cb(matches);
-        };
-    };
+				$('body').removeClass('waiting');
 
-
-    return api.getFoldersList().then(function (data) {
-        this.searcher = new Search(data);
-
-        $('.js-input').typeahead({
-                hint: true,
-                highlight: true,
-                minLength: 1
-            },
-            {
-                name: 'states',
-                source: substringMatcher(this.searcher)
-            }
-        );
-    }.bind(this));
+				$('.js-input').typeahead({
+						hint: true,
+						highlight: true,
+						minLength: 1
+				}, 
+						{ 
+								source: this.search(this.searcher).bind(this),
+								limit: 100,
+								templates: {
+										suggestion: Handlebars.compile('<div title="{{path}}" class="result"><span class="title">{{item.title}}</span><span class="path"> {{path}}<span></div>')
+								}
+						});
+		}.bind(this));
 };
 
 FolderPicker.prototype.init = function () {
-    this.getFoldersList();
+		this.getFoldersList();
 };
 
 function FolderPicker() {
-    this.init();
+		this.init();
 }
 
 module.exports = FolderPicker;
